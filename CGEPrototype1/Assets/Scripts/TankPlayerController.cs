@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class TankPlayerController : MonoBehaviour
 {
-    //setting this to 8 in the inspector
-    public float speed;
-    
-    //setting this to 100 in the inspector
-    public float turnSpeed;
+  public float speed;
+  public float turnSpeed;
+  public float horizontalInput;
+  public float verticalInput;
 
-    public float horizontalInput;
-    public float verticalInput;
 
-    // Start is called before the first frame update
-    void Update()
-    {
-      horizontalInput = Input.GetAxis("Horizontal");
-      verticalInput = Input.GetAxis("Vertical");
+  void Update()
+  {
+    //Move forward
+    //transform.Translate(1,0);
 
-        //move player with vertical input
-      transform.Translate(Vector2.right * Time.deltaTime * speed * verticalInput);
-      transform.Translate(Vector2.forward, turnSpeed * Time.deltaTime * horizontalInput);
-    }
+    //Which is the same as...
+    //transform.Translate(Vector2.right);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Move forward 20meters/second if speed is set to 20
+    //transform.Translate(Vector2.right * Time.deltaTime * speed);
+
+
+    //Get Input - do this in Update()
+    horizontalInput = Input.GetAxis("Horizontal");
+    verticalInput = Input.GetAxis("Vertical");
+
+    //Move player side-to-side with horizontal input
+    //tranform.Translate(Vector2.right * turnSpeed * Time.deltaTime * horizontalInput);
+
+    //Move player forward with vertical input
+    transform.Translate(Vector2.right * Time.deltaTime * speed * verticalInput);
+
+    //Rotate player with horizontal input
+    transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime * horizontalInput);
+  }
 }
