@@ -36,12 +36,14 @@ public class ScoreManager : MonoBehaviour
         }
         if (gameOver)
         {
-            textbox.text = "You win!\n Press R to Play Again!";
-
-        }
-        else
-        {
-            textbox.text = "You Lose! \n Press R to Try Again!";
+            if (won)
+            {
+                textbox.text = "You win!\n Press R to Play Again!";
+            }
+            else
+            {
+                textbox.text = "You Lose! \n Press R to Try Again!";
+            }
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
