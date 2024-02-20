@@ -18,6 +18,7 @@ public class ScoreTriggerZone : MonoBehaviour
             active = false;
             //Adds one to score when player enters trigger zone
             ScoreManager.score++;
+            gameObject.SetActive(false);
         }
     }
 }
