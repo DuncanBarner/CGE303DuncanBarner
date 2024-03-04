@@ -17,11 +17,19 @@ public class PlatformerPlayerController : MonoBehaviour
     private bool isGrounded;
 
 
+    //Audio clip
+    public AudioClip jumpSound;
+
+    //Audio Source to play our sounds
+    private AudioSource playerAudio;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        playerAudio = GetComponent<AudioSource>();
 
         if(groundCheck == null)
         {
@@ -44,9 +52,11 @@ public class PlatformerPlayerController : MonoBehaviour
         {
             //apply upward force for jumping
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+
 
         }
-        
+
     }
 
      void FixedUpdate()
