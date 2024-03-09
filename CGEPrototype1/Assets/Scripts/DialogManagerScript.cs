@@ -14,11 +14,14 @@ public class DialogManagerScript: MonoBehaviour
     public GameObject continueButton;
     public GameObject dialogPanel;
 
+  
+
      void OnEnable()
     {
         continueButton.SetActive(false);
         StartCoroutine(Type());
 
+        
 
     }
 

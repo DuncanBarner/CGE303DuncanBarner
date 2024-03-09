@@ -38,12 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: Decorations
+    uniqueID: 3166943197
     locked: 0
   - name: Platforms
     uniqueID: 4266895503
     locked: 0
-  - name: Decorations
-    uniqueID: 3166943197
+  - name: Default
+    uniqueID: 0
     locked: 0
