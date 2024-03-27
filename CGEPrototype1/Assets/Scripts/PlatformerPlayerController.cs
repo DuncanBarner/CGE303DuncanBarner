@@ -16,6 +16,9 @@ public class PlatformerPlayerController : MonoBehaviour
     private float horizontalInput;
     private bool isGrounded;
 
+    private Animator animator;
+
+
 
     //Audio clip
     public AudioClip jumpSound;
@@ -30,6 +33,7 @@ public class PlatformerPlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         playerAudio = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
         if(groundCheck == null)
         {
@@ -64,8 +68,23 @@ public class PlatformerPlayerController : MonoBehaviour
         //moves the player using Rigidbody2D in FixedUpdate
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
+        animator.SetFloat("xVelocityAbs", Math.Abs(rb.velocity.x));
+        animator.SetFloat("yVelocity", rb.velocity.y);
+
         //Check if player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        animator.SetBool("onGround", isGrounded);
+
+        if(horizontalInput > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+
 
 
     }
