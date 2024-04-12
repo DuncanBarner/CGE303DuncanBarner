@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2730042459
+    locked: 0
   - name: Decorations
     uniqueID: 3166943197
     locked: 0

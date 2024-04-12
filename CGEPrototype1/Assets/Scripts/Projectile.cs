@@ -8,7 +8,13 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
 
     public float speed = 20f;
-    // Start is called before the first frame update
+
+
+    //damage the projectile will deal with default of 20
+    public int damage = 20;
+
+
+
     void Start()
     {
 
@@ -20,9 +26,26 @@ public class Projectile : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    //When the projectile collides with an object
+    private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        
+        Enemy enemy = hitInfo.GetComponent<Enemy>();
+
+        //If object that was hit is of type Enemy
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+
+        }
+        //If the object that was hit is not the player
+        if(hitInfo.gameObject.tag != "Player")
+        {
+            //destroy projectile
+            Destroy(gameObject);
+        }
+
+
     }
+
+
 }
