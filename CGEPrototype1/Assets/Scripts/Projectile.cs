@@ -13,6 +13,9 @@ public class Projectile : MonoBehaviour
     //damage the projectile will deal with default of 20
     public int damage = 20;
 
+    //impact animation effect for projectile once it collides with something
+    public GameObject impactEffect;
+
 
 
     void Start()
@@ -40,6 +43,13 @@ public class Projectile : MonoBehaviour
         //If the object that was hit is not the player
         if(hitInfo.gameObject.tag != "Player")
         {
+
+
+            //Instantiate impact effect
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
+
+
+
             //destroy projectile
             Destroy(gameObject);
         }
