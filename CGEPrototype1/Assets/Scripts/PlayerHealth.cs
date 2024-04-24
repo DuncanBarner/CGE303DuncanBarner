@@ -24,7 +24,10 @@ public class PlayerHealth : MonoBehaviour
 
     //Time in seconds to recover from being hit
     public float hitRecoveryTime = 0.2f;
-    
+
+    //Sound effect variables
+    private AudioSource playerAudio;
+    public AudioClip playerHitSound;
     
     void Start()
     { 
@@ -43,6 +46,9 @@ public class PlayerHealth : MonoBehaviour
         //Initialize hitRecently to false
         hitRecently = false;
 
+        //Set the AudioSource reference
+        playerAudio = GetComponent<AudioSource>();
+
     }
 
 
@@ -58,7 +64,10 @@ public class PlayerHealth : MonoBehaviour
         hitRecently = true;
 
         //Start coroutine to recover from being hit
-        StartCoroutine(RecoverFromHit());
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(RecoverFromHit());
+        }
 
         /*
          Calculate direction of the knockback by using Vector2 to draw an arrow
@@ -102,14 +111,16 @@ public class PlayerHealth : MonoBehaviour
         //update health bar
         healthBar.SetValue(health);
 
-        //TODO: Play sound effect when damaged
-        //TODO: Play animation when the player takes damage
-
+        
 
         //Die function
         if(health <= 0)
         {
             Die();
+        }
+        else
+        {
+            playerAudio.PlayOneShot(playerHitSound, 1.0f);
         }
     }
 
@@ -118,8 +129,9 @@ public class PlayerHealth : MonoBehaviour
         //Set gameover in ScoreManager to true
         ScoreManager.gameOver = true;
 
-        //TODO: Play sound effect when player dies
-        //TODO: Add player death effect when player dies
+        
+        //Spawns the player death effect
+        Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
 
         //Disable player object
         gameObject.SetActive(false);
