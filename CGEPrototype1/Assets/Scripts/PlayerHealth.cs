@@ -28,9 +28,15 @@ public class PlayerHealth : MonoBehaviour
     //Sound effect variables
     private AudioSource playerAudio;
     public AudioClip playerHitSound;
+
+    private Animator animator;
+
     
     void Start()
     { 
+        //Set animator reference
+        animator = GetComponent<Animator>();
+
         //Set the rigidbody reference
         rb = GetComponent<Rigidbody2D>();
 
@@ -99,6 +105,9 @@ public class PlayerHealth : MonoBehaviour
 
         //set hitRecently to false
         hitRecently = false;
+
+        //Set hit animation to false
+        animator.SetBool("hit", false);
     }
 
 
@@ -121,6 +130,9 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             playerAudio.PlayOneShot(playerHitSound, 1.0f);
+
+            //Play the player hit animation
+            animator.SetBool("hit", true);
         }
     }
 

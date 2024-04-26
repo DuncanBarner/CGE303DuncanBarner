@@ -99538,7 +99538,6 @@ MonoBehaviour:
   knockbackForce: 5
   playerDeathEffect: {fileID: 6287867674960745457, guid: f52590d4e588f954083f6ca992aeb909, type: 3}
   hitRecoveryTime: 0.2
-  playerDeathSound: {fileID: 8300000, guid: 31186b572b2f26141ac6392ac1ea0909, type: 3}
   playerHitSound: {fileID: 8300000, guid: f389995a2ee1b8f4b9106f99d0235fcd, type: 3}
 --- !u!1001 &1764376556
 PrefabInstance:
