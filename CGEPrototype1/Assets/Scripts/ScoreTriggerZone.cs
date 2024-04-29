@@ -6,21 +6,21 @@ public class ScoreTriggerZone : MonoBehaviour
 {
     //Create a variable to track whether the trigger zone is active
     bool active = true;
-   // public AudioClip pickupSound;
-   // private AudioSource audioSource;
+    public AudioClip pickupSound;
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
     private void Start()
     {
         // Get the AudioSource component attached to this GameObject
-       // audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         // Check if an AudioSource component exists, if not, add one
 
 
         // Assign the pickup sound to the AudioSource
-       // audioSource.clip = pickupSound;
+        audioSource.clip = pickupSound;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,7 +28,7 @@ public class ScoreTriggerZone : MonoBehaviour
         if (active && collision.gameObject.tag == "Player")
         {
 
-            //audioSource.PlayOneShot(pickupSound);
+            audioSource.PlayOneShot(pickupSound);
             //deactivate trigger zone
 
             active = false;
@@ -37,11 +37,11 @@ public class ScoreTriggerZone : MonoBehaviour
 
 
 
-            //StartCoroutine(DeactivateWithDelay()); //creating this to allow pickup sound to play
-            gameObject.SetActive(false); //commented this out if you have pickup sound 
+            StartCoroutine(DeactivateWithDelay()); //creating this to allow pickup sound to play
+           // gameObject.SetActive(false); //commented this out if you have pickup sound 
         }
     }
-    /*
+    
     private IEnumerator DeactivateWithDelay()
     {
         // Wait for the duration of the pickup sound
@@ -50,5 +50,5 @@ public class ScoreTriggerZone : MonoBehaviour
         // Deactivate the trigger zone GameObject
         gameObject.SetActive(false);
     }
-    */
+    
 }
