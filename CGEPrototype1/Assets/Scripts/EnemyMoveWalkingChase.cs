@@ -23,6 +23,9 @@ public class EnemyMoveWalkingChase : MonoBehaviour
 
     private Animator animator;
 
+    //Sprite renderer of enemy
+    private SpriteRenderer sr;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class EnemyMoveWalkingChase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindWithTag("Player").transform;
+        sr = GetComponent<SpriteRenderer>();
         
     }
 
@@ -94,12 +98,16 @@ public class EnemyMoveWalkingChase : MonoBehaviour
     {
         if(playerDirection.x < 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //transform.rotation = Quaternion.Euler(0, 0, 0); commented out bc it flips health bar
+
+            //This method does not flip the health bar
+            sr.flipX = false;
            
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            //transform.rotation = Quaternion.Euler(0, 180, 0); commented out bc it flips health bar
+            sr.flipX = true;
         }
 
     }
