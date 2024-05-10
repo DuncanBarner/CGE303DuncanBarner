@@ -85,10 +85,13 @@ public class EnemyMoveWalkingChase : MonoBehaviour
         LayerMask groundLayer = LayerMask.GetMask("Ground");
 
         //Determine which direction the enemy is facing
-        Vector2 enemyFacingDirection = transform.rotation.y == 0 ? Vector2.left : Vector2.right;
+        Vector2 enemyFacingDirection = (sr.flipX == false) ? Vector2.left : Vector2.right;
 
         //Raycast to check for ground ahead of the enemy
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down + enemyFacingDirection, groundCheckDistance, groundLayer);
+
+        //Draw line to visualize raycast
+        Debug.DrawRay(transform.position, Vector2.down + enemyFacingDirection, Color.red);
 
         //Return true if ground detected
         return hit.collider != null;
