@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/PlatformerPlayerAnimFinished.unity
     guid: 63ad1937e76e65c439c2fbd9591cdb3a
   - enabled: 1
-    path: Assets/Scenes/ShootingPlatformerStart.unity
+    path: Assets/Scenes/ShootingPlatformerFinished.unity
     guid: 7efcde3e68ed30c49938f13c884a933d
   m_configObjects: {}

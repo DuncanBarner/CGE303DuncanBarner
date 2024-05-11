@@ -156,7 +156,7 @@ public class EnemyMoveFlyingPatrolChase : MonoBehaviour
     {
         if(patrolPoints != null)
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.blue;
             foreach(GameObject point in patrolPoints) 
             {
                 Gizmos.DrawWireSphere(point.transform.position, 0.5f); //0.5f is the radius
